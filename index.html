@@ -103,7 +103,7 @@
         this.name = "onePlusone";
       }
     }
-    
+
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -197,6 +197,11 @@
     errorBtns[14].addEventListener('click', () => {
       throw new Error('Global Error');
     });
+
+    window.addEventListener('error',() => {
+      console.error(error);
+      TrackJS.track(error);
+    })
 
   </script>
 </body>
