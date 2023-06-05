@@ -97,10 +97,10 @@
                         
 
   <script>
-    class OneplusOne extends Error{
+    class MathError extends Error{
       constructor(message){
         super(message);
-        this.name = "onePlusone";
+        this.name = "noDivideZero";
       }
     }
 
@@ -115,13 +115,14 @@
     });
     
     try{
-      if(isNaN(firstNum) || isNaN(secondNum)){
-        throw new FormatError("should have a input on each box");
+      if(secondNum == 0 && operator == '/'){
+        throw new MathError("should not divide 0");
       }
       result = eval(`${firstNum} ${operator} ${secondNum}`);
     } catch(err){
-        alert("format error");
+        alert("math error");
         console.warn(err.message);
+        result = "cannot divide by zero"
       }finally{
         output.innerHTML = result;
       }
